@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">-- |</span><span>
+</span><a name="line-2"></a><span class="hs-comment">-- Module:      Math.NumberTheory.Powers</span><span>
+</span><a name="line-3"></a><span class="hs-comment">-- Copyright:   (c) 2011 Daniel Fischer</span><span>
+</span><a name="line-4"></a><span class="hs-comment">-- Licence:     MIT</span><span>
+</span><a name="line-5"></a><span class="hs-comment">-- Maintainer:  Daniel Fischer &lt;daniel.is.fischer@googlemail.com&gt;</span><span>
+</span><a name="line-6"></a><span class="hs-comment">-- Stability:   Provisional</span><span>
+</span><a name="line-7"></a><span class="hs-comment">-- Portability: Non-portable (GHC extensions)</span><span>
+</span><a name="line-8"></a><span class="hs-comment">--</span><span>
+</span><a name="line-9"></a><span class="hs-comment">-- Calculating integer roots, modular powers and related things.</span><span>
+</span><a name="line-10"></a><span class="hs-comment">-- This module reexports the most needed functions from the implementation</span><span>
+</span><a name="line-11"></a><span class="hs-comment">-- modules. The implementation modules provide some additional functions,</span><span>
+</span><a name="line-12"></a><span class="hs-comment">-- in particular some unsafe functions which omit some tests for performance</span><span>
+</span><a name="line-13"></a><span class="hs-comment">-- reasons.</span><span>
+</span><a name="line-14"></a><span class="hs-comment">--</span><span>
+</span><a name="line-15"></a><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Math</span><span class="hs-operator">.</span><span class="hs-identifier">NumberTheory</span><span class="hs-operator">.</span><span class="hs-identifier">Powers</span><span>
+</span><a name="line-16"></a><span>  </span><span class="hs-special">(</span><span> </span><span class="hs-comment">-- *  Integer Roots</span><span>
+</span><a name="line-17"></a><span>    </span><span class="hs-comment">-- ** Square roots</span><span>
+</span><a name="line-18"></a><span>    </span><a href="Math.NumberTheory.Powers.Squares.html#integerSquareRoot"><span class="hs-identifier hs-var">integerSquareRoot</span></a><span>
+</span><a name="line-19"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.Squares.html#isSquare"><span class="hs-identifier hs-var">isSquare</span></a><span>
+</span><a name="line-20"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.Squares.html#exactSquareRoot"><span class="hs-identifier hs-var">exactSquareRoot</span></a><span>
+</span><a name="line-21"></a><span>    </span><span class="hs-comment">-- ** Cube roots</span><span>
+</span><a name="line-22"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.Cubes.html#integerCubeRoot"><span class="hs-identifier hs-var">integerCubeRoot</span></a><span>
+</span><a name="line-23"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.Cubes.html#isCube"><span class="hs-identifier hs-var">isCube</span></a><span>
+</span><a name="line-24"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.Cubes.html#exactCubeRoot"><span class="hs-identifier hs-var">exactCubeRoot</span></a><span>
+</span><a name="line-25"></a><span>    </span><span class="hs-comment">-- ** Fourth roots</span><span>
+</span><a name="line-26"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.Fourth.html#integerFourthRoot"><span class="hs-identifier hs-var">integerFourthRoot</span></a><span>
+</span><a name="line-27"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.Fourth.html#isFourthPower"><span class="hs-identifier hs-var">isFourthPower</span></a><span>
+</span><a name="line-28"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.Fourth.html#exactFourthRoot"><span class="hs-identifier hs-var">exactFourthRoot</span></a><span>
+</span><a name="line-29"></a><span>    </span><span class="hs-comment">-- ** General roots</span><span>
+</span><a name="line-30"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.General.html#integerRoot"><span class="hs-identifier hs-var">integerRoot</span></a><span>
+</span><a name="line-31"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.General.html#isKthPower"><span class="hs-identifier hs-var">isKthPower</span></a><span>
+</span><a name="line-32"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.General.html#exactRoot"><span class="hs-identifier hs-var">exactRoot</span></a><span>
+</span><a name="line-33"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.General.html#isPerfectPower"><span class="hs-identifier hs-var">isPerfectPower</span></a><span>
+</span><a name="line-34"></a><span>  </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Powers.General.html#highestPower"><span class="hs-identifier hs-var">highestPower</span></a><span>
+</span><a name="line-35"></a><span>  </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><a name="line-36"></a><span>
+</span><a name="line-37"></a><span class="hs-keyword">import</span><span> </span><a href="Math.NumberTheory.Powers.Squares.html"><span class="hs-identifier">Math</span><span class="hs-operator">.</span><span class="hs-identifier">NumberTheory</span><span class="hs-operator">.</span><span class="hs-identifier">Powers</span><span class="hs-operator">.</span><span class="hs-identifier">Squares</span></a><span>
+</span><a name="line-38"></a><span class="hs-keyword">import</span><span> </span><a href="Math.NumberTheory.Powers.Cubes.html"><span class="hs-identifier">Math</span><span class="hs-operator">.</span><span class="hs-identifier">NumberTheory</span><span class="hs-operator">.</span><span class="hs-identifier">Powers</span><span class="hs-operator">.</span><span class="hs-identifier">Cubes</span></a><span>
+</span><a name="line-39"></a><span class="hs-keyword">import</span><span> </span><a href="Math.NumberTheory.Powers.Fourth.html"><span class="hs-identifier">Math</span><span class="hs-operator">.</span><span class="hs-identifier">NumberTheory</span><span class="hs-operator">.</span><span class="hs-identifier">Powers</span><span class="hs-operator">.</span><span class="hs-identifier">Fourth</span></a><span>
+</span><a name="line-40"></a><span class="hs-keyword">import</span><span> </span><a href="Math.NumberTheory.Powers.General.html"><span class="hs-identifier">Math</span><span class="hs-operator">.</span><span class="hs-identifier">NumberTheory</span><span class="hs-operator">.</span><span class="hs-identifier">Powers</span><span class="hs-operator">.</span><span class="hs-identifier">General</span></a><span>
+</span><a name="line-41"></a></pre></body></html>

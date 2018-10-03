@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><link rel="stylesheet" type="text/css" href="style.css" /><script type="text/javascript" src="highlight.js"></script></head><body><pre><span class="hs-comment">-- |</span><span>
+</span><a name="line-2"></a><span class="hs-comment">-- Module:      Math.NumberTheory.Primes.Testing.Certificates</span><span>
+</span><a name="line-3"></a><span class="hs-comment">-- Copyright:   (c) 2011 Daniel Fischer</span><span>
+</span><a name="line-4"></a><span class="hs-comment">-- Licence:     MIT</span><span>
+</span><a name="line-5"></a><span class="hs-comment">-- Maintainer:  Daniel Fischer &lt;daniel.is.fischer@googlemail.com&gt;</span><span>
+</span><a name="line-6"></a><span class="hs-comment">-- Stability:   Provisional</span><span>
+</span><a name="line-7"></a><span class="hs-comment">-- Portability: Non-portable (GHC extensions)</span><span>
+</span><a name="line-8"></a><span class="hs-comment">--</span><span>
+</span><a name="line-9"></a><span class="hs-comment">-- Certificates for primality or compositeness.</span><span>
+</span><a name="line-10"></a><span class="hs-keyword">module</span><span> </span><span class="hs-identifier">Math</span><span class="hs-operator">.</span><span class="hs-identifier">NumberTheory</span><span class="hs-operator">.</span><span class="hs-identifier">Primes</span><span class="hs-operator">.</span><span class="hs-identifier">Testing</span><span class="hs-operator">.</span><span class="hs-identifier">Certificates</span><span>
+</span><a name="line-11"></a><span>    </span><span class="hs-special">(</span><span> </span><span class="hs-comment">-- * Certificates</span><span>
+</span><a name="line-12"></a><span>      </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#Certificate"><span class="hs-identifier hs-type">Certificate</span></a><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><a name="line-13"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#argueCertificate"><span class="hs-identifier hs-var">argueCertificate</span></a><span>
+</span><a name="line-14"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#CompositenessProof"><span class="hs-identifier hs-type">CompositenessProof</span></a><span>
+</span><a name="line-15"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#composite"><span class="hs-identifier hs-var">composite</span></a><span>
+</span><a name="line-16"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#PrimalityProof"><span class="hs-identifier hs-type">PrimalityProof</span></a><span>
+</span><a name="line-17"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#cprime"><span class="hs-identifier hs-var">cprime</span></a><span>
+</span><a name="line-18"></a><span>      </span><span class="hs-comment">-- * Arguments</span><span>
+</span><a name="line-19"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#CompositenessArgument"><span class="hs-identifier hs-type">CompositenessArgument</span></a><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><a name="line-20"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#PrimalityArgument"><span class="hs-identifier hs-type">PrimalityArgument</span></a><span class="hs-special">(</span><span class="hs-glyph">..</span><span class="hs-special">)</span><span>
+</span><a name="line-21"></a><span>      </span><span class="hs-comment">-- ** Weaken proofs to arguments</span><span>
+</span><a name="line-22"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#arguePrimality"><span class="hs-identifier hs-var">arguePrimality</span></a><span>
+</span><a name="line-23"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#argueCompositeness"><span class="hs-identifier hs-var">argueCompositeness</span></a><span>
+</span><a name="line-24"></a><span>      </span><span class="hs-comment">-- ** Prove valid arguments</span><span>
+</span><a name="line-25"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#verifyPrimalityArgument"><span class="hs-identifier hs-var">verifyPrimalityArgument</span></a><span>
+</span><a name="line-26"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#verifyCompositenessArgument"><span class="hs-identifier hs-var">verifyCompositenessArgument</span></a><span>
+</span><a name="line-27"></a><span>      </span><span class="hs-comment">-- * Determine and prove whether a number is prime or composite</span><span>
+</span><a name="line-28"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#certify"><span class="hs-identifier hs-var">certify</span></a><span>
+</span><a name="line-29"></a><span>      </span><span class="hs-comment">-- ** Checks for the paranoid</span><span>
+</span><a name="line-30"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#checkCertificate"><span class="hs-identifier hs-var">checkCertificate</span></a><span>
+</span><a name="line-31"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#checkCompositenessProof"><span class="hs-identifier hs-var">checkCompositenessProof</span></a><span>
+</span><a name="line-32"></a><span>    </span><span class="hs-special">,</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html#checkPrimalityProof"><span class="hs-identifier hs-var">checkPrimalityProof</span></a><span>
+</span><a name="line-33"></a><span>    </span><span class="hs-special">)</span><span> </span><span class="hs-keyword">where</span><span>
+</span><a name="line-34"></a><span>
+</span><a name="line-35"></a><span class="hs-keyword">import</span><span> </span><a href="Math.NumberTheory.Primes.Testing.Certificates.Internal.html"><span class="hs-identifier">Math</span><span class="hs-operator">.</span><span class="hs-identifier">NumberTheory</span><span class="hs-operator">.</span><span class="hs-identifier">Primes</span><span class="hs-operator">.</span><span class="hs-identifier">Testing</span><span class="hs-operator">.</span><span class="hs-identifier">Certificates</span><span class="hs-operator">.</span><span class="hs-identifier">Internal</span></a><span>
+</span><a name="line-36"></a><span>
+</span><a name="line-37"></a></pre></body></html>

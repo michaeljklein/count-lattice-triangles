@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>Math.NumberTheory.MoebiusInversion.Int</title><link href="ocean.css" rel="stylesheet" type="text/css" title="Ocean" /><script src="haddock-util.js" type="text/javascript"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script><script type="text/javascript">//<![CDATA[
+window.onload = function () {pageLoad();};
+//]]>
+</script></head><body><div id="package-header"><ul class="links" id="page-menu"><li><a href="src/Math.NumberTheory.MoebiusInversion.Int.html">Source</a></li><li><a href="index.html">Contents</a></li><li><a href="doc-index.html">Index</a></li></ul><p class="caption">arithmoi-0.6.0.1: Efficient basic number-theoretic functions.</p></div><div id="content"><div id="module-header"><table class="info"><tr><th valign="top">Copyright</th><td>(c) 2012 Daniel Fischer</td></tr><tr><th>License</th><td>MIT</td></tr><tr><th>Maintainer</th><td>Daniel Fischer &lt;daniel.is.fischer@googlemail.com&gt;</td></tr><tr><th>Stability</th><td>Provisional</td></tr><tr><th>Portability</th><td>Non-portable (GHC extensions)</td></tr><tr><th>Safe Haskell</th><td>None</td></tr><tr><th>Language</th><td>Haskell2010</td></tr></table><p class="caption">Math.NumberTheory.MoebiusInversion.Int</p></div><div id="description"><p class="caption">Description</p><div class="doc"><p>Generalised Moebius inversion for <code><a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a></code> valued functions.</p></div></div><div id="synopsis"><p id="control.syn" class="caption expander" onclick="toggleSection('syn')">Synopsis</p><ul id="section.syn" class="hide" onclick="toggleSection('syn')"><li class="src short"><a href="#v:generalInversion">generalInversion</a> :: (<a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a> -&gt; <a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a>) -&gt; <a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a> -&gt; <a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a></li><li class="src short"><a href="#v:totientSum">totientSum</a> :: <a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a> -&gt; <a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a></li></ul></div><div id="interface"><h1>Documentation</h1><div class="top"><p class="src"><a id="v:generalInversion" class="def">generalInversion</a> :: (<a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a> -&gt; <a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a>) -&gt; <a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a> -&gt; <a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a> <a href="src/Math.NumberTheory.MoebiusInversion.Int.html#generalInversion" class="link">Source</a> <a href="#v:generalInversion" class="selflink">#</a></p><div class="doc"><p><code>generalInversion g n</code> evaluates the generalised Moebius inversion of <code>g</code>
+   at the argument <code>n</code>.</p><p>The generalised Moebius inversion implemented here allows an efficient
+   calculation of isolated values of the function <code>f : N -&gt; Z</code> if the function
+   <code>g</code> defined by</p><pre>
+g n = sum [f (n `quot` k) | k &lt;- [1 .. n]]
+</pre><p>can be cheaply computed. By the generalised Moebius inversion formula, then</p><pre>
+f n = sum [moebius k * g (n `quot` k) | k &lt;- [1 .. n]]
+</pre><p>which allows the computation in <em>O</em>(n) steps, if the values of the
+   Moebius function are known. A slightly different formula, used here,
+   does not need the values of the Moebius function and allows the
+   computation in <em>O</em>(n^0.75) steps, using <em>O</em>(n^0.5) memory.</p><p>An example of a pair of such functions where the inversion allows a
+   more efficient computation than the direct approach is</p><pre>
+f n = number of reduced proper fractions with denominator &lt;= n
+g n = number of proper fractions with denominator &lt;= n
+</pre><p>(a <em>proper fraction</em> is a fraction <code>0 &lt; n/d &lt; 1</code>). Then <code>f n</code> is the
+   cardinality of the Farey sequence of order <code>n</code> (minus 1 or 2 if 0 and/or
+   1 are included in the Farey sequence), or the sum of the totients of
+   the numbers <code>2 &lt;= k &lt;= n</code>. <code>f n</code> is not easily directly computable,
+   but then <code>g n = n*(n-1)/2</code> is very easy to compute, and hence the inversion
+   gives an efficient method of computing <code>f n</code>.</p><p>For <code><a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a></code> valued functions, unboxed arrays can be used for greater efficiency.
+   That bears the risk of overflow, however, so be sure to use it only when it's
+   safe.</p><p>The value <code>f n</code> is then computed by <code>generalInversion g n</code>. Note that when
+   many values of <code>f</code> are needed, there are far more efficient methods, this
+   method is only appropriate to compute isolated values of <code>f</code>.</p></div></div><div class="top"><p class="src"><a id="v:totientSum" class="def">totientSum</a> :: <a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a> -&gt; <a href="../base-4.10.1.0/Data-Int.html#t:Int">Int</a> <a href="src/Math.NumberTheory.MoebiusInversion.Int.html#totientSum" class="link">Source</a> <a href="#v:totientSum" class="selflink">#</a></p><div class="doc"><p><code>totientSum n</code> is, for <code>n &gt; 0</code>, the sum of <code>[totient k | k &lt;- [1 .. n]]</code>,
+   computed via generalised Moebius inversion.
+   See <a href="http://mathworld.wolfram.com/TotientSummatoryFunction.html">http://mathworld.wolfram.com/TotientSummatoryFunction.html</a> for the
+   formula used for <code>totientSum</code>.</p></div></div></div></div><div id="footer"><p>Produced by <a href="http://www.haskell.org/haddock/">Haddock</a> version 2.18.1</p></div></body></html>
