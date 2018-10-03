@@ -1,0 +1,94 @@
+-- This file has been generated from package.yaml by hpack version 0.28.2.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 137fe2e83a60b67901ec51c97d2ac6f2044a1383b899f1261c42006e728233e6
+
+name:           count-lattice-triangles
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/michaeljklein/count-lattice-triangles#readme>
+homepage:       https://github.com/michaeljklein/count-lattice-triangles#readme
+bug-reports:    https://github.com/michaeljklein/count-lattice-triangles/issues
+author:         Michael J. Klein
+maintainer:     lambdamichael@github.com
+copyright:      2018 Michael J. Klein
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+cabal-version:  >= 1.10
+extra-source-files:
+    ChangeLog.md
+    README.md
+
+source-repository head
+  type: git
+  location: https://github.com/michaeljklein/count-lattice-triangles
+
+library
+  exposed-modules:
+      Lib
+  other-modules:
+      Paths_count_lattice_triangles
+  hs-source-dirs:
+      src
+  build-depends:
+      abstract-par
+    , arithmoi
+    , base >=4.7 && <5
+    , bifunctors
+    , containers
+    , deepseq
+    , monad-par
+    , monad-par-extras
+    , mtl
+    , parallel
+    , transformers
+    , vector
+  default-language: Haskell2010
+
+executable count-lattice-triangles-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_count_lattice_triangles
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      abstract-par
+    , arithmoi
+    , base >=4.7 && <5
+    , bifunctors
+    , containers
+    , count-lattice-triangles
+    , deepseq
+    , monad-par
+    , monad-par-extras
+    , mtl
+    , parallel
+    , transformers
+    , vector
+  default-language: Haskell2010
+
+test-suite count-lattice-triangles-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_count_lattice_triangles
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      abstract-par
+    , arithmoi
+    , base >=4.7 && <5
+    , bifunctors
+    , containers
+    , count-lattice-triangles
+    , deepseq
+    , monad-par
+    , monad-par-extras
+    , mtl
+    , parallel
+    , transformers
+    , vector
+  default-language: Haskell2010
